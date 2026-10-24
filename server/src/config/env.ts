@@ -1,6 +1,21 @@
 import dotenv from 'dotenv';
 import { z } from 'zod';
+import path from 'path';
+import fs from 'fs';
 
+// Search for .env in server directory and cwd
+const envCandidatePaths = [
+  path.resolve(process.cwd(), 'server/.env'),
+  path.resolve(process.cwd(), '.env')
+];
+
+for (const candidate of envCandidatePaths) {
+  if (fs.existsSync(candidate)) {
+    dotenv.config({ path: candidate });
+    break;
+  }
+}
+// Fallback default config
 dotenv.config();
 
 const envSchema = z.object({
