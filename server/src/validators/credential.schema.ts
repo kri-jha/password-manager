@@ -70,19 +70,19 @@ export const listCredentialsQuerySchema = z.object({
     categoryId: z.string().optional(),
     favorite: z
       .string()
-      .transform((val) => val === 'true')
+      .transform((val: string) => val === 'true')
       .optional(),
     search: z.string().trim().optional(),
     sortBy: z.enum(['title', 'createdAt', 'updatedAt', 'lastUsedAt']).optional().default('updatedAt'),
     order: z.enum(['asc', 'desc']).optional().default('desc'),
     page: z
       .string()
-      .transform((val) => Math.max(1, parseInt(val, 10) || 1))
+      .transform((val: string) => Math.max(1, parseInt(val, 10) || 1))
       .optional()
       .default('1'),
     limit: z
       .string()
-      .transform((val) => Math.min(100, Math.max(1, parseInt(val, 10) || 20)))
+      .transform((val: string) => Math.min(100, Math.max(1, parseInt(val, 10) || 20)))
       .optional()
       .default('20')
   })
