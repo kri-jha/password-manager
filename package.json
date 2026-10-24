@@ -1,0 +1,15 @@
+{
+  "name": "password-saver-monorepo",
+  "version": "1.0.0",
+  "description": "Full-Stack Zero-Knowledge Personal Password Manager (React + Vite + Tailwind + Node.js + Express + TypeScript + MongoDB)",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix server & npm run dev --prefix client",
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "build:server": "npm run build --prefix server",
+    "build:client": "npm run build --prefix client",
+    "build": "npm run build:server && npm run build:client",
+    "test:server": "npm test --prefix server"
+  }
+}
